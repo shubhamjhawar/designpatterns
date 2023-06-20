@@ -1,5 +1,5 @@
 # designpatterns
-x# Design_Pattern_Assignment
+# Design_Pattern_Assignment
 
 ## Weather Monitoring System
 The Weather Monitoring System is a Python application that implements the Observer design pattern to monitor weather conditions and notify multiple display devices about changes in the weather. It establishes a one-to-many relationship between the weather station (subject) and the display devices (observers).
