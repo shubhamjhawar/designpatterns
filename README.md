@@ -9,11 +9,30 @@ The Observer design pattern is used to establish a dependency between objects, s
 
 In the Weather Monitoring System, the Observer pattern is implemented as follows:
 
-- Subject: The WeatherStation class acts as the subject or the weather station. It maintains a list of registered observers (observers) and provides methods to register and unregister observers. It also defines a method to notify all registered observers when new weather data is available.
+# Vehicle Manufacturing System
 
-- Observers: The DisplayDevice class is the abstract base class for observers or display devices. It defines an abstract method update(weather_data) that concrete observers must implement. This method is called by the subject to update the observer with the latest weather data.
+The Vehicle Manufacturing System is a Python program that allows users to create different types of vehicles using the factory design pattern. It also follows the Observer pattern to notify display devices when the weather conditions change.
 
-- Concrete Observers: The MobileAppDisplay, WebInterfaceDisplay, and DesktopApplicationDisplay classes are concrete observers or display devices. They inherit from the DisplayDevice base class and implement the update method to handle the received weather data. Each observer is responsible for updating its own user interface and displaying the weather information.
+## Features
+
+- Supports the creation of cars, motorcycles, and trucks.
+- Each vehicle type has specific attributes such as the number of wheels, seating capacity, and maximum speed.
+- User-friendly interface for selecting the desired vehicle type and maximum speed.
+- Utilizes the factory design pattern to encapsulate the creation logic and ensure the correct type of vehicle is created.
+- Implements the Observer pattern to establish a one-to-many relationship between the weather station (subject) and the display devices (observers).
+- When the weather data is updated, all registered display devices are automatically notified and display the latest weather information.
+- Provides a way to access and display the attributes of the manufactured vehicle.
+
+## Prerequisites
+
+- Python 3.x
+
+## Getting Started
+
+1. Clone the repository:
+
+   ```shell
+   git clone https://github.com/shubhamjhawar/designpatterns
 
 
 ## Vehicle Manufacturing System
