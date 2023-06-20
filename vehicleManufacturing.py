@@ -8,9 +8,9 @@ class Vehicle(ABC):
 
 # Concrete Products (Car, Motorcycle, Truck)
 class Car(Vehicle):
-    def __init__(self, max_speed, seating_capacity):
+    def __init__(self):
         self.wheels = 4
-        self.max_speed = 120
+        self.max_speed = 100
         self.seating_capacity =  4
 
     def get_details(self):
@@ -45,7 +45,7 @@ class Factory(ABC):
 # Concrete Creators (Car Factory, Motorcycle Factory, Truck Factory)
 class CarFactory(Factory):
     def create_vehicle(self):
-        return Car(max_speed=120,seating_capacity=4)
+        return Car()
 
 class MotorcycleFactory(Factory):
     def create_vehicle(self):
