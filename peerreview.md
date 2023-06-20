@@ -23,5 +23,5 @@ Both codes aim to achieve similar functionality using the Observer pattern but d
 - This incorporates the notification process within the `notify_observer()` method of the `WeatherStation` class.
 - This introduces a `previous_weather_data` variable to track changes in weather data and avoids unnecessary notifications when data hasn't changed
 
-## Code Comparison: vehicle amnufacturing
+## Code Comparison: vehicle manufacturing
 The code involves more user interaction and has less hard coded and logic used are similar
