@@ -1,115 +1,78 @@
 from abc import ABC, abstractmethod
 
-# Abstract Vehicle class
+# Product (Vehicle)
 class Vehicle(ABC):
     @abstractmethod
-    def get_vehicle_type(self):
+    def get_details(self):
         pass
 
-    @abstractmethod
-    def get_number_of_wheels(self):
-        pass
-
-    @abstractmethod
-    def get_seating_capacity(self):
-        pass
-
-    @abstractmethod
-    def get_maximum_speed(self):
-        pass
-
-
-# Car class implementing the Vehicle interface
+# Concrete Products (Car, Motorcycle, Truck)
 class Car(Vehicle):
-    def get_vehicle_type(self):
-        return "Car"
+    def __init__(self, max_speed, seating_capacity):
+        self.wheels = 4
+        self.max_speed = 120
+        self.seating_capacity =  4
 
-    def get_number_of_wheels(self):
-        return 4
+    def get_details(self):
+        return f"Car Details: Wheels={self.wheels}, Seating Capacity={self.seating_capacity}, Max Speed={self.max_speed}"
 
-    def get_seating_capacity(self):
-        return 5
-
-    def get_maximum_speed(self):
-        return 200
-
-
-# Motorcycle class implementing the Vehicle interface
 class Motorcycle(Vehicle):
-    def get_vehicle_type(self):
-        return "Motorcycle"
+    def __init__(self):
+        self.wheels = 2
+        self.max_speed = 100
+        self.seating_capacity =  2
 
-    def get_number_of_wheels(self):
-        return 2
+    def get_details(self):
+        return f"Motorcycle Details: Wheels={self.wheels}, Seating Capacity={self.seating_capacity}, Max Speed={self.max_speed}"
+        
 
-    def get_seating_capacity(self):
-        return 2
-
-    def get_maximum_speed(self):
-        return 180
-
-
-# Truck class implementing the Vehicle interface
 class Truck(Vehicle):
-    def get_vehicle_type(self):
-        return "Truck"
+    def __init__(self):
+        self.wheels = 6
+        self.max_speed = 100
+        self.seating_capacity =  2
 
-    def get_number_of_wheels(self):
-        return 6
+    def get_details(self):
+        return f"Truck Details: Wheels={self.wheels}, Seating Capacity={self.seating_capacity}, Max Speed={self.max_speed}"
+        
 
-    def get_seating_capacity(self):
-        return 3
-
-    def get_maximum_speed(self):
-        return 150
-
-
-# Vehicle Factory interface
-class VehicleFactory(ABC):
+# Creator (Vehicle Factory)
+class Factory(ABC):
     @abstractmethod
-    def create_vehicle(self):
+    def create_vehicle(self, max_speed):
         pass
-
-
-# Car Factory class implementing the VehicleFactory interface
-class CarFactory(VehicleFactory):
+    
+# Concrete Creators (Car Factory, Motorcycle Factory, Truck Factory)
+class CarFactory(Factory):
     def create_vehicle(self):
-        return Car()
+        return Car(max_speed=120,seating_capacity=4)
 
-
-# Motorcycle Factory class implementing the VehicleFactory interface
-class MotorcycleFactory(VehicleFactory):
+class MotorcycleFactory(Factory):
     def create_vehicle(self):
         return Motorcycle()
 
-
-# Truck Factory class implementing the VehicleFactory interface
-class TruckFactory(VehicleFactory):
+class TruckFactory(Factory):
     def create_vehicle(self):
         return Truck()
 
+# Usage
+if __name__ == '__main__':
+    # User input for the desired vehicle type
+    vehicle_type = input("Enter the vehicle type (car/motorcycle/truck): ")
 
-# Example usage
-if __name__ == "__main__":
-    # User's input for vehicle type
-    vehicle_type = "car"  # Options: "car", "motorcycle", "truck"
-
-    # Factory selection based on user's input
-    if vehicle_type.lower() == "car":
+    # Vehicle factory based on user input
+    if vehicle_type == "car":
         factory = CarFactory()
-    elif vehicle_type.lower() == "motorcycle":
+    elif vehicle_type == "motorcycle":
         factory = MotorcycleFactory()
-    elif vehicle_type.lower() == "truck":
+    elif vehicle_type == "truck":
         factory = TruckFactory()
     else:
-        print("Invalid vehicle type!")
+        print("Invalid vehicle type.")
         exit()
 
     # Create the desired vehicle object using the factory
     vehicle = factory.create_vehicle()
 
-    # Access and display the attributes of the manufactured vehicle
-    print("Vehicle Type:", vehicle.get_vehicle_type())
-    print("Number of Wheels:", vehicle.get_number_of_wheels())
-    print("Seating Capacity:", vehicle.get_seating_capacity())
-    print("Maximum Speed:", vehicle.get_maximum_speed())
+    # Display the vehicle details
+    print(vehicle.get_details())
